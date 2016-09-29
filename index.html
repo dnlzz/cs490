@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!-- Kyle Van Kirk -->
+<!-- Ver. 09/28/2016  -->
+<!-- Front end login page -->
+<!-- CS490 -->
+<html>
+  <head>
+    <!--Style sheet reference -->
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+  </head>
+  <body>
+    <center>
+      <form action="loginFront.php" method="post">
+        <div class="imgcontainer">
+          <img src="njit.jpg" alt="head" class="imagehead">
+        </div>
+        <div class="imgcontainer">
+          <img src="avatar.png" alt="Avatar" class="avatar">
+        </div>
+        <div class="container">
+          <label><b>Username</b></label>
+          <br>
+          <input type="text" placeholder="Enter Username" name="usr" required>
+          <br>
+          <label><b>Password</b></label>
+          <br>
+          <input type="password" placeholder="Enter Password" name="pswd" required>
+          <br>
+          <button type="submit">login</button>
+          <input type="checkbox" checked="checked"> Remember me
+        </div>
+        <div class="container" style="background-color:#f0f0f0">
+          <button type="button" class="cancelbtn">cancel</button>
+          <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
+      </form>
+      <footer>
+        <p>Designed by: Kyle Van Kirk, Tony Degliomini, Alex Rosen, Christian Basile</p>
+      </footer>
+     </center>
+  </body>
+</html>
