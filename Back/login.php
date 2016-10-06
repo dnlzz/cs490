@@ -1,3 +1,10 @@
+<!-- 
+	Anthony Degliomini
+	CS-490
+	Group: Alex Rosen, Kyle Van Kirk, Christian Basile
+	Version: 9-29-16
+ -->
+
 <?php require 'config.php'; ?>
 
 <?php
@@ -10,12 +17,16 @@
 		if (mysqli_num_rows($result) == 1) {
 
 			$response = array( "status" => 200,
-								"msg" => "Successful project back-end login" );
+								  "msg" => "Successful project back-end login" );
+
+			session_start();
+			$row = mysqli_fetch_array($result);
+			$_SESSION["user_id"] = $row["user_id"];
 
 		} else {
 
 			$response = array( "status" => 404,
-								"msg" => "Failed project back-end login" );
+								  "msg" => "Failed project back-end login" );
 
 		}
 
@@ -24,6 +35,5 @@
 	}
 
 	mysqli_close($link);
-
 
 ?>
