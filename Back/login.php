@@ -1,9 +1,3 @@
-<!-- 
-	Anthony Degliomini
-	CS-490
-	Group: Alex Rosen, Kyle Van Kirk, Christian Basile
-	Version: 9-29-16
- -->
 
 <?php require 'config.php'; ?>
 
@@ -19,9 +13,8 @@
 			$response = array( "status" => 200,
 								  "msg" => "Successful project back-end login" );
 
-			session_start();
 			$row = mysqli_fetch_array($result);
-			$_SESSION["user_id"] = $row["user_id"];
+			$response["user_id"] = $row["id"];
 
 		} else {
 
@@ -31,8 +24,8 @@
 		}
 
 		echo json_encode($response);
-
 	}
+
 
 	mysqli_close($link);
 

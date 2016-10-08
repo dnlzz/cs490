@@ -1,14 +1,8 @@
-<!-- 
-	Anthony Degliomini
-	CS-490
-	Group: Alex Rosen, Kyle Van Kirk, Christian Basile
-	Version: 10-6-16
- -->
+<?php session_start(); ?>
 
 <?php require 'config.php'; ?>
 
 <?php
-
 	//if(isset($_POST['user']) && isset($_POST['pass'])) {
 		$sql = "SELECT * FROM EVENTS WHERE user_id=" . $_SESSION["user_id"] . ";";
 
@@ -40,17 +34,11 @@
 			} 
 		}
 
-
-		echo json_encode($response);
-
+		// echo json_encode($response);
+		echo '<pre>';
+			print_r($response);
 	//}
 
 	mysqli_close($link);
-
-echo '<pre>';
-print_r($response);
-echo '</pre>';
-
-echo $response[0]["event_description"];
 
 ?>

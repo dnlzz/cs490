@@ -1,9 +1,3 @@
-<!-- 
-	Anthony Degliomini
-	CS-490
-	Group: Alex Rosen, Kyle Van Kirk, Christian Basile
-	Version: 10-4-16
- -->
 
 <?php require 'config.php'; ?>
 
