@@ -1,0 +1,68 @@
+<html>
+<head>
+<title>
+test
+</title>
+<script type="text/javascript">
+function quit(){
+  var xhttp = new XMLHttpRequest();
+  var data = {"request": "logout"};
+  xhttp.onreadystatechange = function() {
+    if(this.readyState == 4 && this.status == 200) {
+      document.getElementById('results').innerHTML = xhttp.responseText;
+    }
+  };
+  xhttp.open('POST', 'https://web.njit.edu/~cab56/service/front.php');
+  xhttp.setRequestHeader('Content-Type', 'application/json');
+  xhttp.send(JSON.stringify(data));
+  return false;
+}
+function submitform(){
+  var xhttp = new XMLHttpRequest();
+  var user = document.getElementById('usr').value;
+  var pass = document.getElementById('pwd').value;
+  var data = { "request": "login", "param": {"usr": user, "pwd":pass } };
+  xhttp.onreadystatechange = function() {
+    if(this.readyState == 4 && this.status == 200) {
+      document.getElementById('results').innerHTML = xhttp.responseText;
+    }
+  };
+  xhttp.open('POST', 'https://web.njit.edu/~cab56/service/front.php');
+  xhttp.setRequestHeader('Content-Type', 'application/json');
+  xhttp.send(JSON.stringify(data));
+  return false;
+}
+function submitpost(){
+  var xhttp = new XMLHttpRequest();
+  var data = document.getElementById('input').value;
+  xhttp.onreadystatechange = function() {
+    if(this.readyState = 4 && this.status == 200) {
+      document.getElementById('postresults').innerHTML = xhttp.responseText;
+    }
+  };
+  xhttp.open('POST', 'https://web.njit.edu/~cab56/service/front.php');
+  xhttp.setRequestHeader('Content-Type', 'application/json');
+  xhttp.send(data);
+  return false;
+}
+</script>
+
+</head>
+<body>
+<form>
+<input type="text" name="usr" id="usr">
+<input type="password" name="pwd" id="pwd">
+<input type="submit" value="Login" onclick=" return submitform()">
+<input type="submit" value="Logout" onclick="return quit()">
+</form>
+<div id="results">
+</div>
+<form>
+<textarea rows="8" cols="50" name="input" id="input">
+</textarea>
+<input type="submit" value="Submit" onclick="return submitpost()">
+</form>
+<div id="postresults">
+</div>
+</body>
+</html>
