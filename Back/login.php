@@ -1,3 +1,4 @@
+
 <?php require 'config.php'; ?>
 
 <?php
@@ -9,21 +10,22 @@
 
 		if (mysqli_num_rows($result) == 1) {
 
-			$response = array( "status" => 200,
-								"msg" => "Successful project back-end login" );
+			$row = mysqli_fetch_array($result);
+
+			$response = array( "status" 	=> 200,
+								  "msg" 	=> $row["id"] );
 
 		} else {
 
-			$response = array( "status" => 404,
-								"msg" => "Failed project back-end login" );
+			$response = array( "status" 	=> 404,
+								  "msg" 	=> "Failed project back-end login" );
 
 		}
 
 		echo json_encode($response);
-
 	}
 
-	mysqli_close($link);
 
+	mysqli_close($link);
 
 ?>
