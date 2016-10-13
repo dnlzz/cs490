@@ -1,11 +1,10 @@
 <?php session_start(); ?>
-
 <?php require 'config.php'; ?>
 
 <?php
 	//if(isset($_POST['user']) && isset($_POST['pass'])) {
-		$sql = "SELECT * FROM EVENTS WHERE user_id=" . $_SESSION["user_id"] . ";";
-
+		$sql = "SELECT * FROM EVENTS WHERE user_id=" . $_POST["user_id"] . ";";
+		 // $sql = "SELECT * FROM EVENTS WHERE user_id=4;";
 		$result = mysqli_query($link, $sql);
 
 		$response = array();
@@ -32,11 +31,16 @@
 						"user_id" 				=> $row["user_id"]
 					);
 			} 
+
+				$res = array(
+								"status" => 200,
+								"msg" => $response
+					);
+
 		}
 
-		// echo json_encode($response);
-		echo '<pre>';
-			print_r($response);
+		echo json_encode($res);
+		
 	//}
 
 	mysqli_close($link);

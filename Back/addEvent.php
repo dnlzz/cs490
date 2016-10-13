@@ -27,24 +27,20 @@
 		$sql = "INSERT INTO EVENTS (event_name, event_start_date, event_end_date, event_start_time, event_end_time, event_repeated, event_description, event_calendar, event_location_lat, event_location_long, user_id) VALUES ('Event 5', '2016-10-11', '$event_end_date', '$event_start_time','$event_end_time', '$event_repeated', '$event_description', '$event_calendar', '$event_location_lat', '$event_location_long', '4')";
 
 		if (mysqli_query($link, $sql)) {
-			echo "New record created successfully";
+			// echo "New record created successfully";
 			$response = array( "status" => 200,
 							      "msg" => "Event Added!" );
 		} else {
-			echo "Error: " . $sql . "<br>" . mysqli_error($link);
+			// echo "Error: " . $sql . "<br>" . mysqli_error($link);
 			$response = array( "status" => 404,
-							      "msg" => "Error Adding Event!" );
+							      "msg" => "Error Adding Event!",
+							      "error" => mysqli_error($link) );
 		}
 
-		//echo json_encode($response);
+		echo json_encode($response);
 
 	//}
 
 	mysqli_close($link);
-
-echo '<pre>';
-print_r($response);
-echo '</pre>';
-
 
 ?>

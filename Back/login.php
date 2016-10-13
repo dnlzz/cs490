@@ -10,16 +10,15 @@
 
 		if (mysqli_num_rows($result) == 1) {
 
-			$response = array( "status" => 200,
-								  "msg" => "Successful project back-end login" );
-
 			$row = mysqli_fetch_array($result);
-			$response["user_id"] = $row["id"];
+
+			$response = array( "status" 	=> 200,
+								  "msg" 	=> $row["id"] );
 
 		} else {
 
-			$response = array( "status" => 404,
-								  "msg" => "Failed project back-end login" );
+			$response = array( "status" 	=> 404,
+								  "msg" 	=> "Failed project back-end login" );
 
 		}
 
