@@ -1,17 +1,20 @@
-<?php session_start(); ?>
+
 <?php require 'config.php'; ?>
 
 <?php
 	//if(isset($_POST['user']) && isset($_POST['pass'])) {
+
+		// $sql = "SELECT * FROM EVENTS WHERE user_id=" . $_POST["user_id"] . ";";
 		$sql = "SELECT * FROM EVENTS WHERE user_id=" . $_POST["user_id"] . ";";
-		 // $sql = "SELECT * FROM EVENTS WHERE user_id=4;";
+
 		$result = mysqli_query($link, $sql);
 
 		$response = array();
 
 		if (mysqli_num_rows($result) < 1) {
-			$response = array( "status" => 404,
-							   "msg" => "No Events Matching Criteria!" );
+			$res = array( "status" => 404,
+							   "msg" => "No Events Matching Criteria!",
+							   "p" => $_POST["user_id"]);
 		} else {
 
 			while ($row = mysqli_fetch_array($result)) {
