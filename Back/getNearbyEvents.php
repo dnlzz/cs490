@@ -8,6 +8,8 @@
 
 		$user_id = $_POST["user_id"];
 
+		$input = $_POST["location_info"];
+
 		$lat = $_POST["event_location_lat"];
 		$long = $_POST["event_location_long"];
 
