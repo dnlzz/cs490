@@ -5,7 +5,7 @@
 	//if(isset($_POST['user']) && isset($_POST['pass'])) {
 
 		// $sql = "SELECT * FROM EVENTS WHERE user_id=" . $_POST["user_id"] . ";";
-		$sql = "SELECT * FROM EVENTS WHERE user_id=" . $_POST["user_id"] . ";";
+		$sql = "SELECT * FROM EVENTS WHERE user_id=" . $_POST["user_id"] . " ORDER BY event_start_date;";
 
 		$result = mysqli_query($link, $sql);
 
@@ -30,8 +30,7 @@
 						"event_description" 	=> $row["event_description"],
 						"event_calendar" 		=> $row["event_calendar"],
 						"event_location_lat" 	=> $row["event_location_lat"],
-						"event_location_long" 	=> $row["event_location_long"],
-						"user_id" 				=> $row["user_id"]
+						"event_location_long" 	=> $row["event_location_long"]
 					);
 			} 
 
