@@ -14,7 +14,7 @@
 		if (mysqli_num_rows($result) < 1) {
 			$res = array( "status" => 404,
 							   "msg" => "No Events Matching Criteria!",
-							   "p" => $_POST["user_id"]);
+							   "user_id" => $_POST["user_id"]);
 		} else {
 
 			while ($row = mysqli_fetch_array($result)) {
