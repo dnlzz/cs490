@@ -5,7 +5,22 @@
 	//if(isset($_POST['user']) && isset($_POST['pass'])) {
 
 		// $sql = "SELECT * FROM EVENTS WHERE user_id=" . $_POST["user_id"] . ";";
-		$sql = "SELECT * FROM EVENTS WHERE user_id=" . $_POST["user_id"] . " ORDER BY event_start_date;";
+
+		$user_id = $_POST["user_id"];
+
+		$input = $_POST["location_info"];
+
+		$lat = $_POST["event_location_lat"];
+		$long = $_POST["event_location_long"];
+
+		$latLowerRange = $lat - 1;
+		$latUpperRange = $lat + 1;
+
+		$longLowerRange = $long - 1;
+		$longUpperRange = $long + 1;
+
+
+		$sql = "SELECT * FROM EVENTS WHERE (event_location_lat BETWEEN '$latLowerRange' AND '$latUpperRange') AND (event_location_long BETWEEN '$longLowerRange' AND '$longUpperRange') AND user_id = '$user_id';";
 
 		$result = mysqli_query($link, $sql);
 
@@ -14,7 +29,7 @@
 		if (mysqli_num_rows($result) < 1) {
 			$res = array( "status" => 404,
 							   "msg" => "No Events Matching Criteria!",
-							   "user_id" => $_POST["user_id"]);
+							   "p" => $user_id);
 		} else {
 
 			while ($row = mysqli_fetch_array($result)) {
@@ -30,7 +45,8 @@
 						"event_description" 	=> $row["event_description"],
 						"event_calendar" 		=> $row["event_calendar"],
 						"event_location_lat" 	=> $row["event_location_lat"],
-						"event_location_long" 	=> $row["event_location_long"]
+						"event_location_long" 	=> $row["event_location_long"],
+						"user_id" 				=> $row["user_id"]
 					);
 			} 
 
